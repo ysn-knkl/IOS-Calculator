@@ -57,8 +57,9 @@ function DisplayNumbers() {
 function AppendNumber(number) {
   if (number === "." && currentOperand.includes(".")) return;
   if (number === 0 && currentOperand === "0") return;
+  if (currentOperand.length > 7) return;
 
-  currentOperand += number;
+  currentOperand = currentOperand.toString() + number.toString();
   DisplayNumbers();
 }
 
@@ -83,6 +84,9 @@ function Compute() {
   let computation;
   const previous = parseFloat(previousOperand);
   const current = parseFloat(currentOperand);
+
+  acButton.innerHTML = "C";
+  if (!previousOperand && !ChooseOperation) return;
 
   switch (operation) {
     case "+":
@@ -112,13 +116,14 @@ function Compute() {
 }
 
 function AllClear() {
-  if (!currentOperand) {
+  if (!previousOperand && !operation) {
+    currentOperand = currentOperand.toString();
     currentOperand = currentOperand.slice(0, currentOperand.length - 1);
   } else {
     previousOperand = "";
     currentOperand = "";
     operation = undefined;
-    acButton.innerHTML = "AC";
+    acButton.innerHTML = "C";
   }
 
   DisplayNumbers();
