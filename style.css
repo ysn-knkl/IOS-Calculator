@@ -35,7 +35,7 @@ body {
     flex-direction: column;
     justify-content: space-evenly;
 
-    border: 1px solid red;
+
 }
 
 .previous-display{
@@ -50,7 +50,6 @@ body {
     grid-template-columns: repeat(4,1fr);
     grid-template-rows: repeat(5,1fr);
 
-    border: 1px solid blue;
 }
 
 .button {
